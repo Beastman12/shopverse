@@ -7,6 +7,8 @@
 ![SQLite](https://img.shields.io/badge/SQLite-node%3Asqlite-003B57)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
+**Repository:** <https://github.com/Beastman12/shopverse>
+
 ---
 
 ## Highlights
@@ -223,7 +225,20 @@ Checkout validates stock and quantities, recomputes totals on the server, create
 
 ## Deployment
 
-Any host that runs Node ≥ 22.5 and gives you a persistent disk works (Render, Railway, Fly.io, a VPS). Set `NODE_ENV=production`, a strong `SESSION_SECRET`, and make sure `data/` is on persistent storage. Start with `npm start` after `npm run seed`.
+Any host that runs Node ≥ 22.5 and gives you a persistent disk works (Render, Railway, Fly.io, a VPS). Set `NODE_ENV=production`, a strong `SESSION_SECRET`, and make sure `data/` is on persistent storage. The server seeds an empty database on boot, so a fresh deploy comes up populated.
+
+**Render (one click):** the repo ships a [`render.yaml`](render.yaml) blueprint. Use the button below, sign in, and Render creates the web service with a generated `SESSION_SECRET`:
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Beastman12/shopverse)
+
+> The free plan has an ephemeral filesystem, so the SQLite demo data resets whenever the instance restarts. Attach a Render disk mounted at `/opt/render/project/src/data` (paid plans) for persistence.
+
+**Docker:** a production [`Dockerfile`](Dockerfile) is included for Fly.io, Railway, Koyeb or any container host:
+
+```bash
+docker build -t shopverse .
+docker run -p 3000:3000 -e SESSION_SECRET=change-me -v shopverse-data:/app/data shopverse
+```
 
 This project is a portfolio/demo build: payment is simulated, and tax/shipping rules are illustrative rather than production tax logic.
 

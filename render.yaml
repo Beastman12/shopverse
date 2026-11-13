@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: shopverse
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm run seed && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 24
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
