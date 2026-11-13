@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Orders — ShopVerse</title>
+  <meta name="description" content="View your ShopVerse order history, delivery status and order details.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css?v=1">
+</head>
+<body data-page="orders">
+  <div id="site-header"></div>
+
+  <main class="container orders-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumbs__sep">›</span>
+      <span>Your orders</span>
+    </nav>
+
+    <div class="page-title-row">
+      <h1>Your Orders</h1>
+      <p>Track, review and manage everything you've ordered.</p>
+    </div>
+
+    <div id="orders-notice"></div>
+
+    <div class="panel">
+      <div class="panel__head">
+        <h2 id="orders-heading">Order history</h2>
+        <div class="inline-actions" id="order-filters">
+          <button class="btn btn--dark btn--sm" type="button" data-status="all">All</button>
+          <button class="btn btn--outline btn--sm" type="button" data-status="Processing">Processing</button>
+          <button class="btn btn--outline btn--sm" type="button" data-status="Shipped">Shipped</button>
+          <button class="btn btn--outline btn--sm" type="button" data-status="Delivered">Delivered</button>
+          <button class="btn btn--outline btn--sm" type="button" data-status="Cancelled">Cancelled</button>
+        </div>
+      </div>
+      <div id="orders-list">
+        <div class="loading-block">
+          <div class="spinner"></div>
+          <p>Loading your orders…</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+
+  <script src="/js/api.js?v=1"></script>
+  <script src="/js/layout.js?v=1"></script>
+  <script src="/js/orders.js?v=1"></script>
+</body>
+</html>

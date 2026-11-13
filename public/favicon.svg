@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="ShopVerse">
+  <rect width="64" height="64" rx="14" fill="#febd69"/>
+  <path d="M18 20h4l4.5 20.5a3 3 0 0 0 2.9 2.4h14.3a3 3 0 0 0 2.9-2.4L50 24H24" fill="none" stroke="#131921" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="30" cy="50" r="2.6" fill="#131921"/>
+  <circle cx="44" cy="50" r="2.6" fill="#131921"/>
+  <path d="M26 33c4 3 10 3 14 0" fill="none" stroke="#131921" stroke-width="3" stroke-linecap="round"/>
+</svg>

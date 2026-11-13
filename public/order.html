@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order details — ShopVerse</title>
+  <meta name="description" content="View delivery status and details for a ShopVerse order.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css?v=1">
+</head>
+<body data-page="order">
+  <div id="site-header"></div>
+
+  <main class="container orders-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumbs__sep">›</span>
+      <a href="/orders">Your orders</a>
+      <span class="breadcrumbs__sep">›</span>
+      <span id="crumb-order">Order details</span>
+    </nav>
+
+    <div id="order-root">
+      <div class="loading-block">
+        <div class="spinner"></div>
+        <p>Loading order…</p>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+
+  <script src="/js/api.js?v=1"></script>
+  <script src="/js/layout.js?v=1"></script>
+  <script src="/js/order.js?v=1"></script>
+</body>
+</html>

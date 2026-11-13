@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Dashboard — ShopVerse</title>
+  <meta name="description" content="ShopVerse seller dashboard: manage products, orders and store performance.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css?v=1">
+</head>
+<body data-page="admin">
+  <div id="site-header"></div>
+
+  <main class="container admin-page">
+    <div id="admin-loading" class="loading-block">
+      <div class="spinner"></div>
+      <p>Checking your access…</p>
+    </div>
+
+    <div id="admin-denied" hidden>
+      <div class="empty-state">
+        <div class="empty-state__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <h2>Seller access only</h2>
+        <p id="admin-denied-copy">Sign in with an administrator account to manage the catalog and orders.</p>
+        <div class="inline-actions" style="justify-content:center">
+          <a class="btn btn--primary" href="/login?next=/admin">Sign in as admin</a>
+          <a class="btn btn--outline" href="/">Back to the store</a>
+        </div>
+        <p class="form-hint" style="margin-top:14px">Demo admin: admin@shopverse.dev / Admin123!</p>
+      </div>
+    </div>
+
+    <div id="admin-app" hidden>
+      <div class="admin-header">
+        <div>
+          <h1>Seller dashboard</h1>
+          <p>Manage your catalog, orders and store health.</p>
+        </div>
+        <div class="inline-actions">
+          <a class="btn btn--outline btn--sm" href="/">View storefront</a>
+          <button class="btn btn--primary btn--sm" type="button" id="new-product">+ New product</button>
+        </div>
+      </div>
+
+      <div class="admin-tabs" role="tablist" aria-label="Dashboard sections">
+        <button class="admin-tab is-active" type="button" data-tab="overview" role="tab" aria-selected="true">Overview</button>
+        <button class="admin-tab" type="button" data-tab="products" role="tab" aria-selected="false">Products</button>
+        <button class="admin-tab" type="button" data-tab="orders" role="tab" aria-selected="false">Orders</button>
+      </div>
+
+      <section class="admin-panel" id="panel-overview" role="tabpanel">
+        <div class="stat-grid" id="stat-grid"></div>
+        <div class="admin-grid">
+          <div class="admin-table-wrap">
+            <div class="admin-table-head">
+              <h2>Recent orders</h2>
+              <button class="btn btn--ghost btn--sm" type="button" data-goto-tab="orders">View all</button>
+            </div>
+            <div class="table-scroll">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Order</th><th>Customer</th><th>Status</th><th>Total</th></tr>
+                </thead>
+                <tbody id="recent-orders-body"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="admin-table-wrap">
+            <div class="admin-table-head">
+              <h2>Best sellers</h2>
+            </div>
+            <div class="table-scroll">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Product</th><th>Sold</th><th>Revenue</th></tr>
+                </thead>
+                <tbody id="top-products-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-products" role="tabpanel" hidden>
+        <div class="admin-table-wrap">
+          <div class="admin-table-head">
+            <h2>Products <span class="muted small" id="product-total"></span></h2>
+            <input class="form-input" id="admin-product-search" type="search" placeholder="Search products…" style="width:230px">
+          </div>
+          <div class="table-scroll table-cover">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Rating</th><th></th>
+                </tr>
+              </thead>
+              <tbody id="admin-products-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="admin-panel" id="panel-orders" role="tabpanel" hidden>
+        <div class="admin-table-wrap">
+          <div class="admin-table-head">
+            <h2>All orders</h2>
+            <select class="form-select" id="admin-order-filter" style="width:180px" aria-label="Filter orders by status">
+              <option value="">All statuses</option>
+              <option value="Processing">Processing</option>
+              <option value="Shipped">Shipped</option>
+              <option value="Delivered">Delivered</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+          <div class="table-scroll table-cover">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Order</th><th>Customer</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="admin-orders-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+
+  <div class="modal" id="product-modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="product-modal-title">
+      <div class="modal__head">
+        <h2 id="product-modal-title">New product</h2>
+        <button class="modal__close" type="button" data-close aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <form id="product-form">
+        <div class="modal__body">
+          <div id="product-form-error" class="notice-bar" hidden></div>
+
+          <div class="form-group">
+            <label class="form-label" for="pf-title">Product title</label>
+            <input class="form-input" id="pf-title" name="title" required maxlength="160">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="pf-brand">Brand</label>
+              <input class="form-input" id="pf-brand" name="brand" required maxlength="80">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="pf-category">Category</label>
+              <select class="form-select" id="pf-category" name="categoryId" required></select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="pf-price">Sale price (USD)</label>
+              <input class="form-input" id="pf-price" name="price" type="number" min="0.01" step="0.01" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="pf-list-price">List price (USD)</label>
+              <input class="form-input" id="pf-list-price" name="listPrice" type="number" min="0.01" step="0.01" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="pf-stock">Stock</label>
+              <input class="form-input" id="pf-stock" name="stock" type="number" min="0" step="1" value="25" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="pf-badge">Badge (optional)</label>
+              <input class="form-input" id="pf-badge" name="badge" maxlength="40" placeholder="Best Seller / Top pick">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="pf-description">Description</label>
+            <textarea class="form-input form-textarea" id="pf-description" name="description" rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="pf-features">Key features (one per line)</label>
+            <textarea class="form-input form-textarea" id="pf-features" name="features" rows="4"></textarea>
+          </div>
+
+          <div class="inline-actions">
+            <label class="form-check"><input type="checkbox" id="pf-prime" name="prime"> Prime delivery</label>
+            <label class="form-check"><input type="checkbox" id="pf-deal" name="deal"> Today's deal</label>
+            <label class="form-check"><input type="checkbox" id="pf-featured" name="featured"> Featured</label>
+          </div>
+        </div>
+        <div class="modal__foot">
+          <button class="btn btn--outline" type="button" data-close>Cancel</button>
+          <button class="btn btn--primary" type="submit" id="pf-submit">Save product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js?v=1"></script>
+  <script src="/js/layout.js?v=1"></script>
+  <script src="/js/admin.js?v=1"></script>
+</body>
+</html>

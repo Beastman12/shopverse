@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Checkout — ShopVerse</title>
+  <meta name="description" content="Complete your ShopVerse order with delivery details and a simulated payment method.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css?v=1">
+</head>
+<body data-page="checkout">
+  <div id="site-header"></div>
+
+  <main class="container checkout-page">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumbs__sep">›</span>
+      <a href="/cart">Cart</a>
+      <span class="breadcrumbs__sep">›</span>
+      <span>Checkout</span>
+    </nav>
+
+    <div class="page-title-row">
+      <h1>Secure checkout</h1>
+      <p>2 steps · Delivery and payment</p>
+    </div>
+
+    <div id="checkout-error" class="notice-bar" hidden></div>
+
+    <div class="checkout-layout">
+      <form class="panel" id="checkout-form" novalidate>
+        <section class="checkout-section">
+          <h2><span class="step-number">1</span> Delivery address</h2>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="fullName">Full name</label>
+              <input class="form-input" id="fullName" name="fullName" type="text" autocomplete="name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email for updates</label>
+              <input class="form-input" id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="address">Street address</label>
+            <input class="form-input" id="address" name="address" type="text" autocomplete="street-address" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="city">City</label>
+              <input class="form-input" id="city" name="city" type="text" autocomplete="address-level2" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="state">State / region</label>
+              <input class="form-input" id="state" name="state" type="text" autocomplete="address-level1" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="zip">Postal code</label>
+              <input class="form-input" id="zip" name="zip" type="text" autocomplete="postal-code" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="country">Country</label>
+              <input class="form-input" id="country" name="country" type="text" autocomplete="country-name" value="India" required>
+            </div>
+          </div>
+        </section>
+
+        <section class="checkout-section">
+          <h2><span class="step-number">2</span> Payment method</h2>
+          <div class="payment-options">
+            <label class="payment-option">
+              <input type="radio" name="paymentMethod" value="card" checked>
+              <span class="payment-option__body">
+                <span class="payment-option__title">Credit or debit card</span>
+                <span class="payment-option__desc">Demo card ending 4242 — no real charge is made.</span>
+              </span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="paymentMethod" value="upi">
+              <span class="payment-option__body">
+                <span class="payment-option__title">UPI</span>
+                <span class="payment-option__desc">Pay from any UPI app. Simulated for this demo.</span>
+              </span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="paymentMethod" value="cod">
+              <span class="payment-option__body">
+                <span class="payment-option__title">Cash on delivery</span>
+                <span class="payment-option__desc">Pay when your order arrives.</span>
+              </span>
+            </label>
+          </div>
+          <p class="form-hint" style="margin-top:12px">
+            This is a portfolio project. No payment details are collected and no money changes hands.
+          </p>
+        </section>
+
+        <div class="inline-actions">
+          <a class="btn btn--outline" href="/cart">Back to cart</a>
+          <button class="btn btn--primary" type="submit" id="place-order">Place your order</button>
+        </div>
+      </form>
+
+      <aside id="checkout-summary" aria-label="Order summary"></aside>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+
+  <script src="/js/api.js?v=1"></script>
+  <script src="/js/layout.js?v=1"></script>
+  <script src="/js/checkout.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search results — ShopVerse</title>
+  <meta name="description" content="Search the ShopVerse catalog by keyword, category, price and rating.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css?v=1">
+</head>
+<body data-page="search">
+  <div id="site-header"></div>
+
+  <main class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="breadcrumbs__sep">›</span>
+      <span id="crumb-current">All products</span>
+    </nav>
+
+    <div class="page-title-row">
+      <h1 id="results-title">All products</h1>
+      <p id="results-subtitle">Loading the catalog…</p>
+    </div>
+
+    <div class="search-layout">
+      <aside class="filters" id="filters" aria-label="Filter results">
+        <div class="filters__head">
+          <h2>Filters</h2>
+          <button class="btn btn--ghost btn--sm filters-toggle" type="button" id="filters-close">Close</button>
+        </div>
+        <div id="filter-groups"></div>
+      </aside>
+
+      <div class="filters-backdrop" id="filters-backdrop"></div>
+
+      <section aria-label="Search results">
+        <div class="results-toolbar">
+          <p class="results-toolbar__count" id="results-count">Loading…</p>
+          <div class="inline-actions">
+            <button class="btn btn--outline btn--sm filters-toggle" type="button" id="filters-open">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+              Filters
+            </button>
+            <label class="results-toolbar__sort" for="sort-select">
+              Sort by:
+              <select id="sort-select">
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price: low to high</option>
+                <option value="price-desc">Price: high to low</option>
+                <option value="rating">Customer rating</option>
+                <option value="newest">Newest arrivals</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="active-filters" id="active-filters"></div>
+        <div class="results-grid" id="results-grid"></div>
+        <div class="pagination" id="pagination"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+
+  <script src="/js/api.js?v=1"></script>
+  <script src="/js/layout.js?v=1"></script>
+  <script src="/js/search.js?v=1"></script>
+</body>
+</html>

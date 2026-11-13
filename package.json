@@ -1,0 +1,29 @@
+{
+  "name": "shopverse",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ShopVerse — a full-stack, Amazon-style e-commerce store built with Node.js, Express and SQLite.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "dev": "node --env-file-if-exists=.env --watch server.js",
+    "seed": "node --env-file-if-exists=.env db/seed.js",
+    "reset": "node db/reset.js",
+    "smoke": "node scripts/smoke-test.js"
+  },
+  "keywords": [
+    "ecommerce",
+    "nodejs",
+    "express",
+    "sqlite",
+    "vanilla-javascript"
+  ],
+  "author": "Niranjan Gupta",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

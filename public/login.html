@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in — ShopVerse</title>
+  <meta name="description" content="Sign in to your ShopVerse account to check out, track orders and write reviews.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css?v=1">
+</head>
+<body data-page="login">
+  <div id="site-header"></div>
+
+  <main class="auth-page">
+    <div class="auth-card">
+      <div class="auth-card__logo">
+        <a class="logo" href="/" aria-label="ShopVerse home">
+          <span class="logo__word">shop<span>verse</span></span>
+          <svg class="logo__smile" viewBox="0 0 100 20" fill="none" aria-hidden="true">
+            <path d="M3 4c20 13 58 15 84 5" stroke="#febd69" stroke-width="4.5" stroke-linecap="round"/>
+            <path d="M80 3.5 89 7l-7.5 6" stroke="#febd69" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="auth-card__box">
+        <h1>Sign in</h1>
+        <div class="auth-error" id="auth-error" role="alert"></div>
+
+        <form id="login-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="login-email">Email</label>
+            <input class="form-input" id="login-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="login-password">Password</label>
+            <input class="form-input" id="login-password" name="password" type="password" autocomplete="current-password" required>
+          </div>
+          <button class="btn btn--primary btn--block" type="submit" id="login-submit">Sign in</button>
+        </form>
+
+        <p class="auth-card__terms">
+          By signing in you agree to the ShopVerse demo terms. This is a portfolio project —
+          no real accounts or payments are involved.
+        </p>
+
+        <div class="auth-card__divider">demo accounts</div>
+        <div class="inline-actions" style="justify-content:center">
+          <button class="btn btn--outline btn--sm" type="button" data-demo-email="demo@shopverse.dev" data-demo-password="Demo123!">Customer demo</button>
+          <button class="btn btn--outline btn--sm" type="button" data-demo-email="admin@shopverse.dev" data-demo-password="Admin123!">Admin demo</button>
+        </div>
+
+        <div class="auth-demo">
+          <strong>Customer:</strong> <code>demo@shopverse.dev</code> / <code>Demo123!</code><br>
+          <strong>Admin:</strong> <code>admin@shopverse.dev</code> / <code>Admin123!</code>
+        </div>
+      </div>
+
+      <p class="auth-card__foot">
+        New to ShopVerse? <a href="/register">Create an account</a>
+      </p>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+
+  <script src="/js/api.js?v=1"></script>
+  <script src="/js/layout.js?v=1"></script>
+  <script src="/js/auth.js?v=1"></script>
+</body>
+</html>

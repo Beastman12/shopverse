@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopVerse — Everyday essentials, delivered</title>
+  <meta name="description" content="Shop electronics, fashion, home, books, beauty and more at ShopVerse. Free delivery over $35, easy returns and a full-stack demo storefront.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css?v=1">
+</head>
+<body data-page="home">
+  <div id="site-header"></div>
+
+  <main>
+    <section class="hero" aria-label="Featured collections">
+      <div class="hero__stage" id="hero-stage">
+        <div class="hero__slide hero__slide--1 is-active" data-slide="0">
+          <div class="hero__content">
+            <p class="hero__eyebrow">Sound, uninterrupted</p>
+            <h1 class="hero__title">Hear every detail.<br>Tune out the noise.</h1>
+            <p class="hero__copy">Adaptive noise cancellation, 40 hours of battery and a fit that
+              disappears. The PulseWave headphones are built for long listening sessions.</p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="/p/pulsewave-anc-headphones">Shop headphones</a>
+              <a class="hero__link" href="/search?category=electronics">Explore electronics</a>
+            </div>
+            <p class="hero__note">Free delivery over $35 · 30-day returns</p>
+          </div>
+          <div class="hero__visual">
+            <div class="hero__image-card">
+              <img src="/img/p/pulsewave-anc-headphones.svg" alt="PulseWave noise-cancelling headphones" width="600" height="600">
+            </div>
+            <span class="hero__tag hero__tag--rating">★ 4.5 · 8,542 ratings</span>
+            <span class="hero__tag hero__tag--price">$249.99</span>
+          </div>
+        </div>
+
+        <div class="hero__slide hero__slide--2" data-slide="1">
+          <div class="hero__content">
+            <p class="hero__eyebrow">Weeknight wins</p>
+            <h1 class="hero__title">Dinner in minutes.<br>Cleanup in seconds.</h1>
+            <p class="hero__copy">Crisp without the oil. The CrispAir 6-quart air fryer turns
+              vegetables, chicken and leftovers into something worth waiting for.</p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="/p/crispair-6qt-air-fryer">Shop air fryers</a>
+              <a class="hero__link" href="/search?category=home">Explore home &amp; kitchen</a>
+            </div>
+            <p class="hero__note">Best Seller · 18,420 customer ratings</p>
+          </div>
+          <div class="hero__visual">
+            <div class="hero__image-card">
+              <img src="/img/p/crispair-6qt-air-fryer.svg" alt="CrispAir 6-quart air fryer" width="600" height="600">
+            </div>
+            <span class="hero__tag hero__tag--rating">★ 4.7 · Best Seller</span>
+            <span class="hero__tag hero__tag--price">$99.99</span>
+          </div>
+        </div>
+
+        <div class="hero__slide hero__slide--3" data-slide="2">
+          <div class="hero__content">
+            <p class="hero__eyebrow">Move better</p>
+            <h1 class="hero__title">Built for the road.<br>Ready for anything.</h1>
+            <p class="hero__copy">Responsive foam, a breathable knit upper and grip that shows up
+              on wet mornings. Your next pair of daily trainers is here.</p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="/p/cloudstep-running-sneakers">Shop sneakers</a>
+              <a class="hero__link" href="/search?category=sports">Explore sports &amp; outdoors</a>
+            </div>
+            <p class="hero__note">Free 30-day returns on footwear</p>
+          </div>
+          <div class="hero__visual">
+            <div class="hero__image-card">
+              <img src="/img/p/cloudstep-running-sneakers.svg" alt="CloudStep running sneakers" width="600" height="600">
+            </div>
+            <span class="hero__tag hero__tag--rating">★ 4.5 · 6,732 ratings</span>
+            <span class="hero__tag hero__tag--price">$89.99</span>
+          </div>
+        </div>
+
+        <button class="hero__arrow hero__arrow--prev" type="button" id="hero-prev" aria-label="Previous slide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button class="hero__arrow hero__arrow--next" type="button" id="hero-next" aria-label="Next slide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+
+        <div class="hero__dots" id="hero-dots" role="tablist" aria-label="Choose a featured collection">
+          <button class="hero__dot is-active" type="button" data-dot="0" aria-label="Slide 1" aria-selected="true"></button>
+          <button class="hero__dot" type="button" data-dot="1" aria-label="Slide 2" aria-selected="false"></button>
+          <button class="hero__dot" type="button" data-dot="2" aria-label="Slide 3" aria-selected="false"></button>
+        </div>
+      </div>
+    </section>
+
+    <div class="container home-main">
+      <nav class="category-grid" id="category-grid" aria-label="Shop by category"></nav>
+
+      <section class="section-card" aria-labelledby="deals-heading">
+        <div class="section-head">
+          <h2 id="deals-heading">Today's deals</h2>
+          <a href="/search?deal=1">See all deals →</a>
+        </div>
+        <div class="deals-rail" id="deals-rail"></div>
+      </section>
+
+      <section class="promo-grid" aria-label="Featured promotions">
+        <article class="promo promo--blue">
+          <h3>Small upgrades, big difference</h3>
+          <p>Tablets, monitors and accessories that make everyday work feel a little lighter.</p>
+          <a class="btn btn--primary btn--sm" href="/search?category=electronics">Shop electronics</a>
+          <div class="promo__art"><img src="/img/p/aerobook-11-tablet.svg" alt="" width="300" height="300" loading="lazy"></div>
+        </article>
+        <article class="promo promo--amber">
+          <h3>Fresh finds for the kitchen</h3>
+          <p>From pour-over kettles to cookware sets — everything for a better morning.</p>
+          <a class="btn btn--primary btn--sm" href="/search?category=home">Shop home &amp; kitchen</a>
+          <div class="promo__art"><img src="/img/p/aroma-pour-over-kettle.svg" alt="" width="300" height="300" loading="lazy"></div>
+        </article>
+      </section>
+
+      <section class="section-card" aria-labelledby="featured-heading">
+        <div class="section-head">
+          <h2 id="featured-heading">Featured picks</h2>
+          <a href="/search">Shop all products →</a>
+        </div>
+        <div class="product-grid" id="featured-grid"></div>
+      </section>
+
+      <section class="section-card" aria-labelledby="top-heading">
+        <div class="section-head">
+          <h2 id="top-heading">Top rated by customers</h2>
+          <a href="/search?sort=rating">See more →</a>
+        </div>
+        <div class="product-grid" id="top-grid"></div>
+      </section>
+
+      <section class="section-card" aria-labelledby="new-heading">
+        <div class="section-head">
+          <h2 id="new-heading">New arrivals</h2>
+          <a href="/search?sort=newest">See what's new →</a>
+        </div>
+        <div class="product-grid" id="new-grid"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+
+  <script src="/js/api.js?v=1"></script>
+  <script src="/js/layout.js?v=1"></script>
+  <script src="/js/home.js?v=1"></script>
+</body>
+</html>
